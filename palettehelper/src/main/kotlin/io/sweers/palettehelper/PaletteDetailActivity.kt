@@ -25,12 +25,12 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import com.nostra13.universalimageloader.core.assist.FailReason
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener
 import com.tonicartos.widget.stickygridheaders.StickyGridHeadersSimpleAdapter
-import kotlinx.android.synthetic.activity_palette_detail.grid_view
-import kotlinx.android.synthetic.activity_palette_detail.image_view
 import kotlinx.android.synthetic.activity_palette_detail.toolbar
 import timber.log.Timber
 import java.util.ArrayList
 import java.util.Arrays
+import kotlinx.android.synthetic.activity_palette_detail.grid_view as gridView
+import kotlinx.android.synthetic.activity_palette_detail.image_view as imageView
 
 public class PaletteDetailActivity : ActionBarActivity() {
 
@@ -99,7 +99,7 @@ public class PaletteDetailActivity : ActionBarActivity() {
             handler.postDelayed(runnable, 500)  // Wait half a second before showing the dialog to avoid flashing effect if it loads fast
 
             ImageLoader.getInstance().init(ImageLoaderConfiguration.Builder(this).build());
-            ImageLoader.getInstance().displayImage(imageUri, image_view, object : SimpleImageLoadingListener() {
+            ImageLoader.getInstance().displayImage(imageUri, imageView, object : SimpleImageLoadingListener() {
                 override fun onLoadingComplete(imageUri: String, view: View, loadedImage: Bitmap) {
                     handler.removeCallbacks(runnable)
 
@@ -236,8 +236,8 @@ public class PaletteDetailActivity : ActionBarActivity() {
 
             Timber.d("Setting up adapter with swatches")
             val adapter = ResultsAdapter(swatches)
-            grid_view.setAdapter(adapter)
-            grid_view.setOnItemClickListener(adapter)
+            gridView.setAdapter(adapter)
+            gridView.setOnItemClickListener(adapter)
         })
     }
 
