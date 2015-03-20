@@ -2,8 +2,6 @@ package io.sweers.palettehelper
 
 import android.content.Context
 import android.widget.Toast
-import com.mixpanel.android.mpmetrics.MixpanelAPI
-import org.json.JSONObject
 
 /**
  * Converts a given color to a #xxxxxx string.
@@ -19,7 +17,10 @@ public fun copyToClipboard(context: Context, text: String) {
     clipboard.setPrimaryClip(clip)
 }
 
-public fun copyAndNotify(context: Context, hex: String) {
-    copyToClipboard(context, hex)
-    Toast.makeText(context, "Copied ${hex} to clipboard", Toast.LENGTH_SHORT).show();
+/**
+ * Copies given text to the clipboard and notifies via Toast
+ */
+public fun copyAndNotify(context: Context, text: String) {
+    copyToClipboard(context, text)
+    Toast.makeText(context, "Copied ${text} to clipboard", Toast.LENGTH_SHORT).show();
 }
